@@ -1,7 +1,6 @@
 set nocompatible
 set relativenumber
-set expandtab
-set shiftwidth=4
+set tabstop=2 shiftwidth=2 expandtab
 syntax on
 set hlsearch
 set t_Co=256
