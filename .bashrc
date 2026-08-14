@@ -10,6 +10,7 @@ fi
 export EDITOR="vim"
 export VISUAL="vim"
 
+alias dotfiles="./$HOME/.config/dotfiles/dotfiles_cli.sh"
 alias h="cd $HOME"
 alias v="vim"
 alias nv="nvim"
