@@ -96,3 +96,18 @@ dotfiles checkout nome-da-branch
 # Trazer alterações comuns da branch principal (ex: main -> gentoo)
 dotfiles merge main
 ```
+### 🛡️ Ferramentas e Proteções Embutidas
+
+A função `dotfiles` no `~/.bashrc` inclui mecanismos de segurança e atalhos de sincronização rápida:
+
+#### 1. Sincronização em um Único Comando (`sync`)
+Para salvar e enviar alterações rápidas em arquivos **já rastreados** (ex: editou o `.bashrc` ou `.vimrc`):
+
+```bash
+dotfiles sync "feat: atualiza aliases e configurações do vim"
+```
+*(Executa automaticamente `add -u`, `commit` e `push`).*
+
+#### 2. Travas do Sistema Anti-Burrice
+- **Adição Massiva Bloqueada:** Comandos como `dotfiles add .` ou `dotfiles add ~/.config` são interrompidos automaticamente para evitar o vazamento de credenciais ou poluição do repositório.
+- **Deleção Física Impedida:** O comando `dotfiles rm` exige obrigatoriamente a flag `--cached` para garantir que nenhum arquivo do seu disco rígido seja apagado acidentalmente.
