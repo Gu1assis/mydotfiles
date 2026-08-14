@@ -5,6 +5,29 @@
 
 GIT_CMD="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+# --- AJUDA / HELP AUTOMÁTICO (Sem argumentos ou -h/--help) ---
+if [ $# -eq 0 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    echo -e "\033[1;34m🛠️  Dotfiles Manager (Bare Repository CLI)\033[0m"
+    echo -e "Gerenciador e sincronizador de arquivos de configuração da Home.\n"
+    
+    echo -e "\033[1;33mUSO CUSTOMIZADO:\033[0m"
+    echo -e "  \033[1;32mdotfiles sync \"mensagem\"\033[0m    Sincronização rápida (add -u, commit e push)"
+    echo -e "  \033[1;32mdotfiles -h, --help\033[0m         Exibe esta tela de ajuda\n"
+    
+    echo -e "\033[1;33mCOMANDOS COMUNS DO GIT (WRAPPER):\033[0m"
+    echo -e "  \033[1;36mdotfiles status\033[0m             Exibe os arquivos modificados e rastreados"
+    echo -e "  \033[1;36mdotfiles add <arquivo>\033[0m      Adiciona um arquivo/pasta específica ao repositório"
+    echo -e "  \033[1;36mdotfiles commit -m \"msg\"\033[0m    Cria um commit local das alterações"
+    echo -e "  \033[1;36mdotfiles push / pull\033[0m        Envia ou puxa alterações do GitHub"
+    echo -e "  \033[1;36mdotfiles rm --cached <arq>\033[0m  Remove um arquivo do Git (MANTÉM NO DISCO)"
+    echo -e "  \033[1;36mdotfiles diff\033[0m               Mostra as alterações pendentes nos arquivos\n"
+
+    echo -e "\033[1;31mPROTEÇÕES ATIVAS:\033[0m"
+    echo -e "  • Bloqueio de 'add .' e 'add ~/.config' (Prevenção contra vazamento de secrets)"
+    echo -e "  • Bloqueio de 'rm' sem a flag '--cached' (Prevenção contra deleção física no disco)\n"
+    exit 0
+fi
+
 # --- TRAVA 1: Atalho de Sincronização Rápida (dotfiles sync "mensagem") ---
 if [ "$1" = "sync" ]; then
     if [ -z "$2" ]; then
