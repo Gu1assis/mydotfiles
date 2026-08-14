@@ -1,0 +1,100 @@
+//-*- mode: jsonc -*-
+{
+    "layer": "top", 
+    "position": "top", 
+    "height": 30, 
+    "spacing": 4, 
+
+    // Choose the order of the modules
+    "modules-left": [
+        "ext/workspaces",
+        "custom/sep",
+        "ext/window",
+        "custom/sep"
+    ],
+    "modules-center": [
+    ],
+
+    "modules-right": [
+        "network",
+	"custom/sep",
+	"battery",
+        "custom/sep",
+        "cpu",
+        "custom/sep",
+        "memory",
+        "custom/sep",
+        "disk",
+        "custom/sep",
+        "clock",
+        "custom/sep",
+        "tray"
+    ],
+
+    // Modules configuration
+    "ext/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}",
+        "persistent-workspaces": {
+            "*" : 9
+        }
+    },
+    "ext/window" : {
+        "max-length": 40,
+        "seperate-outputs": false
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+    "clock": {
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "RAM: {used}GB"
+    },
+    "disk": {
+        "interval": 60,
+        "path": "/",
+        "format": "\uf07c {free}"
+    },
+    "battery": {
+	"bat": "BAT0",
+	"interval": 60,
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "Bat {capacity}%",
+        "format-time": "{H}:{M}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+    	"interval": 5,
+    	"format-wifi": " {essid}",
+    	"format-ethernet": "🖧 {ifname}",
+    	"format-linked": "🖧 {ifname} (Sem IP)",
+    	"format-disconnected": "⚠ Desconectado",
+    	"tooltip-format": "{ifname} via {gwaddr} ",
+    	"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    	"tooltip-format-ethernet": "{ifname} 🖧",
+    	"tooltip-format-disconnected": "Desconectado"
+    },
+    "custom/sep": {
+        "format" : "|",
+        "interval" : 0
+    }
+}
