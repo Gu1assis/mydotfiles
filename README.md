@@ -62,7 +62,11 @@ Uma vez configurado, você usará o alias `dotfiles` **exatamente igual** ao com
 ### 1. Adicionar o Alias Definitivo
 Garanta que o alias esteja no seu `~/.bashrc` (ou arquivo de config do seu shell):
 ```bash
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='$HOME/.config/dotfiles/dotfiles_cli.sh'
+```
+Se necessário, de permissão de execução ao script:
+```bash
+chmod +x ~/.config/dotfiles/dotfiles_cli.sh
 ```
 
 ### 2. Adicionar/Modificar Arquivos
