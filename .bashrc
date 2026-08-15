@@ -19,7 +19,7 @@ alias doc="cd ~/Docs/Linux_Docs && nvim ."
 alias liv="cd ~/Docs/livros && nvim ."
 alias restartwaybar="~/.config/waybar/restart.sh"
 alias zath="cd $HOME/Docs/livros && zathura & disown && exit"
-alias printscreen='grim ~/screenshots/print_$(date +%F_%T).png'
-alias printsection='grim -g "$(slurp)" ~/screenshots/print_$(date +%F_%T).png'
+alias printscreen='ARQUIVO=~/screenshots/print_$(date +%F_%T).png && grim "$ARQUIVO" && imv "$ARQUIVO"'
+alias printsection='ARQUIVO=~/screenshots/print_$(date +%F_%T).png && grim -g "$(slurp)" "$ARQUIVO" && imv "$ARQUIVO"'
 
 dotfiles notify
