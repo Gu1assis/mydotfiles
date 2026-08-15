@@ -5,6 +5,21 @@
 
 GIT_CMD="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+# --- NOTIFICAÇÃO DE ALTERAÇÕES PENDENTES (dotfiles notify) ---
+if [ "$1" = "notify" ]; then
+    # Verifica se há alterações locais não comitadas
+    has_local_changes=$($GIT_CMD status --porcelain 2>/dev/null)
+    
+    # Verifica se há commits locais que não foram enviados (unpushed)
+    has_unpushed=$($GIT_CMD cherry -v 2>/dev/null)
+
+    if [ -n "$has_local_changes" ] || [ -n "$has_unpushed" ]; then
+        echo -e "\033[1;33m⚠️  [Dotfiles Notice]\033[0m Você possui alterações de configuração não sincronizadas!"
+        echo -e "   Rode \033[1;32mdotfiles sync \"mensagem\"\033[0m para atualizar o repositório remoto.\n"
+    fi
+    exit 0
+fi
+
 # --- AJUDA / HELP AUTOMÁTICO (Sem argumentos ou -h/--help) ---
 if [ $# -eq 0 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     echo -e "\033[1;34m🛠️  Dotfiles Manager (Bare Repository CLI)\033[0m"
@@ -12,7 +27,8 @@ if [ $# -eq 0 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     
     echo -e "\033[1;33mUSO CUSTOMIZADO:\033[0m"
     echo -e "  \033[1;32mdotfiles sync \"mensagem\"\033[0m    Sincronização rápida (add -u, commit e push)"
-    echo -e "  \033[1;32mdotfiles -h, --help\033[0m         Exibe esta tela de ajuda\n"
+    echo -e "  \033[1;32mdotfiles notify\033[0m               Verifica pendências locais (útil para o .bashrc/.zshrc)"
+    echo -e "  \033[1;32mdotfiles -h, --help\033[0m           Exibe esta tela de ajuda\n"
     
     echo -e "\033[1;33mCOMANDOS COMUNS DO GIT (WRAPPER):\033[0m"
     echo -e "  \033[1;36mdotfiles status\033[0m             Exibe os arquivos modificados e rastreados"
@@ -25,6 +41,10 @@ if [ $# -eq 0 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     echo -e "\033[1;31mPROTEÇÕES ATIVAS:\033[0m"
     echo -e "  • Bloqueio de 'add .' e 'add ~/.config' (Prevenção contra vazamento de secrets)"
     echo -e "  • Bloqueio de 'rm' sem a flag '--cached' (Prevenção contra deleção física no disco)\n"
+
+    echo -e "\033[1;35mDICA DE NOTIFICAÇÃO NO SHELL:\033[0m"
+    echo -e "  Para receber alertas ao abrir o terminal quando houver configs pendentes, rode:"
+    echo -e "  \033[1;32mecho 'dotfiles notify' >> ~/.bashrc\033[0m  (ou ~/.zshrc)\n"
     exit 0
 fi
 

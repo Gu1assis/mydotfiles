@@ -19,3 +19,5 @@ alias doc="cd ~/Docs/Linux_Docs && nvim ."
 alias liv="cd ~/Docs/livros && nvim ."
 alias restartwaybar="~/.config/waybar/restart.sh"
 alias zath="cd $HOME/Docs/livros && zathura & disown && exit"
+
+dotfiles notify
