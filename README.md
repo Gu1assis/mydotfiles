@@ -115,3 +115,7 @@ dotfiles sync "feat: atualiza aliases e configurações do vim"
 #### 2. Travas do Sistema Anti-Burrice
 - **Adição Massiva Bloqueada:** Comandos como `dotfiles add .` ou `dotfiles add ~/.config` são interrompidos automaticamente para evitar o vazamento de credenciais ou poluição do repositório.
 - **Deleção Física Impedida:** O comando `dotfiles rm` exige obrigatoriamente a flag `--cached` para garantir que nenhum arquivo do seu disco rígido seja apagado acidentalmente.
+
+#### 3 Aviso de configs nao sincronizadas
+
+- **Adicione `dotfiles notify` ao seu .bashrc ou .zshrc**
