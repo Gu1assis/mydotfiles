@@ -34,8 +34,8 @@
     },
     "break",
     {
-      "type": "os",
-      "key": "",
+      "type": "OS",
+      "key": "",
       "keyColor": "#89DCEB"
     },
     {
