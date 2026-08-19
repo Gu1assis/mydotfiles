@@ -22,4 +22,7 @@ alias zath="cd $HOME/Docs/livros && zathura & disown && exit"
 alias printscreen='ARQUIVO=~/screenshots/print_$(date +%F_%T).png && grim "$ARQUIVO" && imv "$ARQUIVO"'
 alias printsection='ARQUIVO=~/screenshots/print_$(date +%F_%T).png && grim -g "$(slurp)" "$ARQUIVO" && imv "$ARQUIVO"'
 
+# Faz certo isso aqui cara
+alias tldr="~/from_source/tealdeer/target/release/tldr"
+
 dotfiles notify
