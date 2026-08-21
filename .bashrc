@@ -24,11 +24,14 @@ alias printsection='ARQUIVO=~/screenshots/print_$(date +%F_%T).png && grim -g "$
 
 dotfiles notify
 
-# Fuzzy Find packages with eix (Gentoo + Overlays ativos)
-qfind() {
-  eix --pure-packages -0 --format '<category>/<name>\n' | \
-  fzf --preview 'eix --compact {}' \
-      --bind 'enter:execute(echo {} | xclip -selection clipboard)+accept'
+gitsync() {
+    if [ -z "$1" ]; then
+        echo "Erro: Você precisa digitar uma mensagem de commit."
+        echo "Exemplo: gitsync \"minha mensagem\""
+        return 1
+    fi
+
+    git add -u && git commit -m "$1" && git push
 }
 
 # fish
