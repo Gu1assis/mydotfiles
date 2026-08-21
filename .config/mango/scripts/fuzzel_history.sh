@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Histórico fica no cache local para não poluir o repositório do Git
-HIST_FILE="$HOME/.cache/wmenu_history"
+HIST_FILE="$HOME/.cache/fuzzel_history"
 touch "$HIST_FILE"
 
 # 1. Puxa os apps abertos antes (do mais recente ao antigo)
