@@ -23,3 +23,16 @@ alias printscreen='ARQUIVO=~/screenshots/print_$(date +%F_%T).png && grim "$ARQU
 alias printsection='ARQUIVO=~/screenshots/print_$(date +%F_%T).png && grim -g "$(slurp)" "$ARQUIVO" && imv "$ARQUIVO"'
 
 dotfiles notify
+
+# Fuzzy Find packages with eix (Gentoo + Overlays ativos)
+qfind() {
+  eix --pure-packages -0 --format '<category>/<name>\n' | \
+  fzf --preview 'eix --compact {}' \
+      --bind 'enter:execute(echo {} | xclip -selection clipboard)+accept'
+}
+
+# fish
+#if [[ $- == *i* ]]; then
+#    exec fish
+#fi
+
