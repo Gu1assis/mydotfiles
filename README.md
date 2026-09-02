@@ -29,7 +29,7 @@ echo ".dotfiles" >> ~/.gitignore
 ### 2. Clonar o repositório como Bare
 Clone o repositório remoto apontando para a pasta oculta `~/.dotfiles`:
 ```bash
-git clone --bare git@github.com:seu-usuario/seu-repositorio.git $HOME/.dotfiles
+git clone --bare https://github.com/Gu1assis/mydotfiles.git $HOME/.dotfiles
 ```
 
 ### 3. Criar o Alias Temporário
