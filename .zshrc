@@ -22,14 +22,15 @@ alias docs="/mnt/c/Users/Usuario/Documents/Linux_Docs"
 alias v="nvim"
 alias dotfiles="$HOME/.config/dotfiles/dotfiles_cli.sh"
 
+sync() {
+  git add . && git commit -m "$1" && git push
+}
+
 fastfetch
 dotfiles notify
 
 # Avisar sobre alteracoes no REMOTE ao entrar num repo git.
 source ~/myScripts/bash/check_git_changes.sh
-cd() {
-    builtin cd "$@" && check_git_upstream
-}
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
