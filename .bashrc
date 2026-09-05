@@ -11,7 +11,6 @@ export EDITOR="vim"
 export VISUAL="vim"
 
 alias dotfiles="$HOME/.config/dotfiles/dotfiles_cli.sh"
-alias h="cd $HOME"
 alias v="vim"
 alias nv="nvim"
 alias batt="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage"
@@ -24,7 +23,7 @@ alias printsection='ARQUIVO=~/screenshots/print_$(date +%F_%T).png && grim -g "$
 
 dotfiles notify
 
-gitsync() {
+sync() {
     if [ -z "$1" ]; then
         echo "Erro: Você precisa digitar uma mensagem de commit."
         echo "Exemplo: gitsync \"minha mensagem\""
