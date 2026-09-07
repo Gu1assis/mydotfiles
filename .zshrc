@@ -23,7 +23,8 @@ alias v="nvim"
 alias dotfiles="$HOME/.config/dotfiles/dotfiles_cli.sh"
 
 s(){
-  w3m "https://duckduckgo.com/?q="$1""
+  local query_string=$(echo "$*" | tr " " "+")
+  w3m "https://duckduckgo.com/?q="$query_string""
 }
 
 sync() {
