@@ -22,6 +22,10 @@ alias docs="/mnt/c/Users/Usuario/Documents/Linux_Docs"
 alias v="nvim"
 alias dotfiles="$HOME/.config/dotfiles/dotfiles_cli.sh"
 
+s(){
+  w3m "https://duckduckgo.com/?q="$1""
+}
+
 sync() {
   git add . && git commit -m "$1" && git push
 }
