@@ -21,6 +21,7 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 alias docs="/mnt/c/Users/Usuario/Documents/Linux_Docs"
 alias v="nvim"
 alias dotfiles="$HOME/.config/dotfiles/dotfiles_cli.sh"
+alias wgetUA="wget -U 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'"
 
 s(){
   local query_string=$(echo "$*" | tr " " "+")
